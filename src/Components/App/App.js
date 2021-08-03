@@ -13,18 +13,18 @@ export default function App() {
     const fetchStories = async () => {
       try {
         const topStories = await getStories('automobiles');
-        setStories(topStories.results)
+        setStories(topStories)
       } catch(e) {
         setError(e.message)
       }
     }
     fetchStories()
   }, [])
-
-  const getTopStory = (genre) => {
+  console.log(stories)
+  const getTopStory = async (genre) => {
     try {
       const topStories = await getStories(genre);
-      setStories(topStories.results)
+      setStories(topStories)
     } catch(e) {
       setError(e.message)
     }
@@ -34,7 +34,7 @@ export default function App() {
     <main>
       <Navbar getTopStory={getTopStory}/>
       <Switch>
-        <Route path='/' component={Home} />
+        <Route path='/' component={Home} stories={stories}/>
       </Switch>
     </main>
   )
