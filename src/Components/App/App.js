@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from '../Home/Home'
 
 export default function App() {
-  const [ stories, setStories ] = useState([])
+  const [ stories, setStories ] = useState({})
   const [ error, setError ] = useState('')
 
 
@@ -13,18 +13,18 @@ export default function App() {
     const fetchStories = async () => {
       try {
         const topStories = await getStories('automobiles');
-        setStories(topStories.results)
+        setStories(topStories)
       } catch(e) {
         setError(e.message)
       }
     }
     fetchStories()
   }, [])
-
-  const getTopStory = (genre) => {
+  console.log(!!stories.stories)
+  const getTopStory = async (genre) => {
     try {
       const topStories = await getStories(genre);
-      setStories(topStories.results)
+      setStories(topStories)
     } catch(e) {
       setError(e.message)
     }
@@ -34,7 +34,9 @@ export default function App() {
     <main>
       <Navbar getTopStory={getTopStory}/>
       <Switch>
-        <Route path='/' component={Home} />
+        <Route path='/'>
+          <Home stories={stories}/>
+        </Route>
       </Switch>
     </main>
   )
