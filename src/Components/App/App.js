@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import getStories from '../../ApiCall/Apicall'
 import Navbar from '../Navbar/Navbar'
-// import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import Home from '../Home/Home'
 
 export default function App() {
   const [ stories, setStories ] = useState([])
@@ -20,9 +21,21 @@ export default function App() {
     fetchStories()
   }, [])
 
+  const getTopStory = (genre) => {
+    try {
+      const topStories = await getStories(genre);
+      setStories(topStories.results)
+    } catch(e) {
+      setError(e.message)
+    }
+  }
+
   return (
     <main>
-      <Navbar/>
+      <Navbar getTopStory={getTopStory}/>
+      <Switch>
+        <Route path='/' component={Home} />
+      </Switch>
     </main>
   )
 }

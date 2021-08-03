@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({ getTopStory }) {
   const genreRef = useRef()
   const options = [ 'arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world' ]
 
@@ -9,13 +9,13 @@ export default function Navbar() {
 
   const formSubmit = (e) => {
     e.preventDefault()
-    console.log(genreRef.current.value)
+    getTopStory(genreRef.current.value)
   }
 
 
   return (
     <header>
-      <h1>The Daily Bugle</h1>
+      <Link to='/'><h1>The Daily Bugle</h1></Link>
       <form onSubmit={(e) => formSubmit(e)}>
         <select defaultValue ref={genreRef} >
           <option  defaultValue >Choose a Genre</option>
