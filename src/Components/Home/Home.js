@@ -1,5 +1,6 @@
 import React from 'react'
 import StoryCard from '../StoryCards/StoryCard'
+import './Home.css'
 
 export default function Home({ stories }) {
   console.log(stories)
@@ -13,14 +14,15 @@ export default function Home({ stories }) {
         id={index + 1}
         title={story.title}
         byLine={story.byline}
+        section={section}
         />
       )
     })
     
     return (
-    <div>
+    <div className='main-section'>
       <h1>{section}</h1>
-      <div>
+      <div className='card-container'>
         {storyCards}
       </div>
     </div>
