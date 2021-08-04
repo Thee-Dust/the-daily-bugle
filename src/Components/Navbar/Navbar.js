@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import './Navbar.css'
 
 export default function Navbar({ getTopStory }) {
   const genreRef = useRef()
   const options = [ 'arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world' ]
-
   const storyOptions = options.map((topic, index) => <option key={index + 1} value={topic}>{topic}</option> )
 
   const formSubmit = (e) => {
