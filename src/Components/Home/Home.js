@@ -3,7 +3,6 @@ import StoryCard from '../StoryCards/StoryCard'
 import './Home.css'
 
 export default function Home({ stories }) {
-  console.log(stories)
   if(!!stories.section) {
     const { section, results } = stories
 
