@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import getStories from '../../ApiCall/Apicall'
+import './ArticleDetail.css'
 
 export default function ArticleDetail({ section, id }) {
   const [ story, setStory ] = useState({});
