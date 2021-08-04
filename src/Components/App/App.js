@@ -3,16 +3,17 @@ import getStories from '../../ApiCall/Apicall'
 import Navbar from '../Navbar/Navbar'
 import { Switch, Route } from 'react-router-dom'
 import Home from '../Home/Home'
+import ArticleDetail from '../ArticleDetail/ArticleDetail'
 
 export default function App() {
-  const [ stories, setStories ] = useState({})
-  const [ error, setError ] = useState('')
+  const [ stories, setStories ] = useState({});
+  const [ error, setError ] = useState('');
 
 
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const topStories = await getStories('automobiles');
+        const topStories = await getStories('Automobiles');
         setStories(topStories)
       } catch(e) {
         setError(e.message)
@@ -20,7 +21,7 @@ export default function App() {
     }
     fetchStories()
   }, [])
-  console.log(!!stories.stories)
+  
   const getTopStory = async (genre) => {
     try {
       const topStories = await getStories(genre);
@@ -34,9 +35,16 @@ export default function App() {
     <main>
       <Navbar getTopStory={getTopStory}/>
       <Switch>
-        <Route path='/'>
+        <Route exact path='/'>
           <Home stories={stories}/>
         </Route>
+        <Route path='/:section/:id'
+        render={({ match }) => {
+          const section = match.params.section
+          const id = match.params.id
+          return <ArticleDetail section={section} id={id}/>
+          }
+        }/>
       </Switch>
     </main>
   )
