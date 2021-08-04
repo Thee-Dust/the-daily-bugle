@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import { Switch, Route } from 'react-router-dom'
 import Home from '../Home/Home'
 import ArticleDetail from '../ArticleDetail/ArticleDetail'
+import './App.css'
 
 export default function App() {
   const [ stories, setStories ] = useState({});
