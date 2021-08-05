@@ -4,7 +4,7 @@
 ### Overview
 A React application that takes on the new york times top story apis. a user is able to select what top story they are able to look at. when they find a article they like they can click on card to get more of a preview and if they wish to continue they can click the link to be able to read the full article. 
 
-##Deploy Instructions
+## Deploy Instructions
 Clone down this repo
 cd into the directory
 Run npm i on your Terminal/command line to install dependencies
